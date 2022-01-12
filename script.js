@@ -1,20 +1,22 @@
-function Book(title, author, pages, read) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
-}
+class Book {
 
-Book.prototype.toggle = function () {
-    console.log(this.read);
-    if (this.read == "true"){
-        return "false";
+    constructor(title, author, pages, read) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
     }
-    else if (this.read == "false") {
-        return "true";
-    }
-    else {
-        return "false";
+
+    toggle(){
+        if (this.read == "true"){
+            return "false";
+        }
+        else if (this.read == "false") {
+            return "true";
+        }
+        else {
+            return "false";
+        }
     }
 }
 
@@ -138,4 +140,5 @@ displayBooks(myLibrary);
 document.getElementById("add-book").addEventListener('click', function() {
     createBook();
 });
+
 
