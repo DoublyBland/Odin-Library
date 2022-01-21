@@ -13,6 +13,27 @@
         <table id="book-table"></table>
         <button id="add-book">Add Book</button>
     </div>
+    <div class="form-popup" id="book-form">
+        <div class="form-container">
+        <form action="">
+          <h1>New Book</h1>
+          <label for="name"><b>Title</b></label>
+          <input type="text" placeholder="Harry Potter" class="input" id="book" required/>
+
+          <label for="name"><b>Author</b></label>
+          <input type="text" placeholder="JK Rowling" class="input" id="author" required/>
+
+          <label for="name"><b>Pages</b></label>
+          <div><input type="number" placeholder="350" class="input" id="pages" required/></div>
+
+          <label for="name"><b>Read (lowercase only)</b></label>
+          <input type="text" placeholder="true" class="input" id="read" required pattern="true|false"/>
+
+          <button type="button" class="btn" id="add-form">Add Book</button>
+          <button type="button" class="btn cancel" id="cancel-form">Cancel</button>
+        </form>
+        </div>
+      </div>
     <script src="script.js"></script>
 </body>
 </html>

@@ -90,14 +90,65 @@ function removeAllChildNodes(parent) {
 }
 
 function createBook() {
-    let title = prompt("Please enter the book title", "Harry Potter");
-    let author = prompt("Please enter book author", "JK Rowling");
-    let pages = prompt("Please enter number of pages", 300)
-    let read = prompt("Have you read this book?", true)
-    let newBook = new Book(title, author, pages, read);
+    let check = checkValues();
+    if(check){
+    // let title = prompt("Please enter the book title", "Harry Potter");
+    // let author = prompt("Please enter book author", "JK Rowling");
+    // let pages = prompt("Please enter number of pages", 300)
+    // let read = prompt("Have you read this book?", true)
+    let newBook = getInfo();
+    //let newBook = new Book(title, author, pages, read);
     addBookToLibrary(newBook);
     displayBooks(myLibrary)
+    _clearForm();
+    closeForm();
+    }
 }
+
+function checkValues(){
+    let title = document.getElementById('book').validity.valid;
+    let author = document.getElementById('author').validity.valid;
+    let pages = document.getElementById('pages').validity.valid;
+    let read = document.getElementById('read').validity.valid;
+
+    console.log(title + author + pages + read);
+
+    if(title == false || author == false || pages == false || read == false){
+        return false
+    }
+    else {
+        return true;
+    }
+
+}
+
+function getInfo(){
+    let title = document.getElementById('book').value;
+    let author = document.getElementById('author').value;
+    let pages = document.getElementById('pages').value;
+    let read = document.getElementById('read').value;
+    
+    let book = new Book(title, author, pages, read);
+    return book;
+}
+
+function openForm(){
+    let form = document.getElementById("book-form")
+    form.style.display = "block";
+}
+
+function closeForm() {
+    let form = document.getElementById("book-form")
+    _clearForm();
+    form.style.display = "none";
+  }
+
+  function _clearForm(){
+    const forms = document.getElementsByClassName('input');
+    for(let i=0;i<forms.length;i++){
+        forms[i].value = "";
+    }
+  }
 
 function removeBook(index) {
     myLibrary.splice(index, 1);
@@ -137,8 +188,14 @@ addBookToLibrary(gameOfThrones);
 addBookToLibrary(goodOmens);
 displayBooks(myLibrary);
 
-document.getElementById("add-book").addEventListener('click', function() {
+let addBook = document.getElementById('add-form');
+addBook.addEventListener('click', function() {
     createBook();
 });
+
+document.getElementById("add-book").addEventListener('click', function() {
+    openForm();
+});
+
 
 
